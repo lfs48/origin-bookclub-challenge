@@ -25,12 +25,12 @@
     "test": "test"
   },
   "engines": {
-    "node": "10.13.0",
-    "npm": "6.4.1"
+    "node": "12.11.0",
+    "npm": "6.11.3"
   },
   "scripts": {
     "start": "webpack --watch --mode=development",
-    "postinstall": "./node_modules/.bin/webpack"
+    "postinstall": "webpack"
   },
   "keywords": [],
   "author": "",
