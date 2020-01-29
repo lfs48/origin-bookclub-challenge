@@ -18,5 +18,5 @@ export const logoutUser = () => ({
 // Then creates and dispatches an action to add that user to state.
 export const login = (user) => (dispatch) => {
     return SessionAPIUtil.login(user)
-    .then( (res) => dispatch(receiveUser(res.data.user) ) );
+    .then( (res) => dispatch(loginUser(res) ) );
 };
