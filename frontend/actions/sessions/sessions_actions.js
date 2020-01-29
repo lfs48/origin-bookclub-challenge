@@ -1,4 +1,4 @@
-import * as SessionAPIUtil from '../../util/api/session_api_util';
+import * as SessionAPIUtil from '../../util/api/sessions_api_util';
 import {LOGIN_USER, LOGOUT_USER} from '../types';
 
 // Standard actions
