@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import {RECEIVE_USER, RECEIVE_ALL_USERS} from '../../actions/entities/types';
+import {RECEIVE_USER, RECEIVE_ALL_USERS} from '../../actions/types';
 
 const usersReducer = (state = {}, action) => {
     // Copy of state is created and state is frozen to ensure this function does not create side effects
