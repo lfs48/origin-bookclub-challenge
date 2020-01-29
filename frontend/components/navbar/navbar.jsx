@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {login} from '../../actions/sessions/sessions_actions';
+import {login, logout} from '../../actions/sessions/sessions_actions';
 import {merge} from 'lodash';
 
 const Navbar = () => {
@@ -36,12 +36,18 @@ const Navbar = () => {
         dispatch(login(user));
     }
 
+    const handleLogout = (e) => {
+        e.preventDefault();
+        dispatch(logout());
+    }
+
     let content = <></>
     
     if (loggedIn) {
         content = 
         <> 
         <span>Welcome, {currentUser.username}</span>
+        <button onClick={e => handleLogout(e)}>Log Out</button>
         </>
     } else {
         content = 
