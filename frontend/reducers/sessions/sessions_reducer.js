@@ -1,4 +1,5 @@
 import { merge } from 'lodash';
+import {LOGIN_USER, LOGOUT_USER} from '../../actions/types';
 
 const sessionsReducer = (state = {}, action) => {
     // Copy of state is created and state is frozen to ensure this function does not create side effects
