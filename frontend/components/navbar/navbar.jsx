@@ -11,6 +11,7 @@ const Navbar = () => {
 
     const dispatch = useDispatch();
 
+    // Controls input fields by updating react state.
     const updateInput = (e, field) => {
         e.preventDefault();
         const newState = merge({}, state);
@@ -18,6 +19,7 @@ const Navbar = () => {
         setState(newState);
     }
 
+    // Handles login button by dispatching a login action, using info from react state to build user object.
     const handleLogin = (e) => {
         e.preventDefault();
         const user = {
