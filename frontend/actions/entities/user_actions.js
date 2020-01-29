@@ -1,4 +1,4 @@
-import * as UsersAPIUtil from '../../util/api/user_api_util';
+import * as UsersAPIUtil from '../../util/api/users_api_util';
 import {RECEIVE_USER, RECEIVE_ALL_USERS} from './types';
 
 
