@@ -1,4 +1,5 @@
 import * as UsersAPIUtil from '../../util/api/users_api_util';
+import {loginUser} from '../sessions/sessions_actions'; 
 import {RECEIVE_USER, RECEIVE_ALL_USERS} from '../types';
 
 
@@ -39,7 +40,7 @@ export const fetchUsers = () => (dispatch) => {
 // If user creation fails, instead creates and dispatches an action to add signup errors to state.
 export const createUser = (formUser) => (dispatch) => {
     return UsersAPIUtil.createUser(formUser).then(
-        (user) => dispatch(receiveUser(user)),
+        (user) => dispatch(loginUser(user)),
         (errors) => dispatch(receiveSignupErrors(errors.responseJSON))
     );
 };
