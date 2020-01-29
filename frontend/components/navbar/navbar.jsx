@@ -31,7 +31,6 @@ const Navbar = () => {
 
     return(
         <nav id="nav-container">
-            <label htmlFor="nav-username-input"></label>
             <input 
                 type="text" 
                 id="nav-username-input" 
@@ -40,7 +39,6 @@ const Navbar = () => {
                 onChange={e => updateInput(e, "username")}
             ></input>
 
-            <label htmlFor="nav-password-input"></label>
             <input 
                 type="password" 
                 id="nav-password-input" 
