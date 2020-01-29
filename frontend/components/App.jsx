@@ -1,8 +1,10 @@
 import React from 'react';
+import {Route} from 'react-router-dom';
+import Splash from './splash/splash';
 
 const App = () => (
     <main id="app-container">
-        <h1>Origin Bookclub</h1>
+        <Route path="/" component={Splash} />
     </main>
 );
 
