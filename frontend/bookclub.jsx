@@ -5,7 +5,21 @@ import Root from './components/root';
 
 const cb = () => {
 
-    const store = configureStore({});
+    let preloadedState = {};
+    if (window.currentUser) {
+        preloadedState = {
+            sessions: { 
+                id: window.currentUser.id 
+            },
+            entities: {
+                users: {
+                    [window.currentUser.id]: window.currentUser
+                }
+            }
+        };
+    }
+    const store = configureStore(preloadedState);
+    delete window.currentUser;
 
     const root = document.getElementById("root");
 
