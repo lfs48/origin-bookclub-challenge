@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {login} from '../../actions/sessions/sessions_actions';
 import {merge} from 'lodash';
 
@@ -10,6 +10,13 @@ const Navbar = () => {
     });
 
     const dispatch = useDispatch();
+
+    const {loggedIn, currentUser} = useSelector(
+        state => ({
+            loggedIn: state.sessions.id != null,
+            currentUser: state.entities.users[state.sessions.id]
+        })
+    );
 
     // Controls input fields by updating react state.
     const updateInput = (e, field) => {
@@ -29,27 +36,41 @@ const Navbar = () => {
         dispatch(login(user));
     }
 
-    return(
+    let content = <></>
+    
+    if (loggedIn) {
+        content = 
+        <> 
+        <span>Welcome, {currentUser.username}</span>
+        </>
+    } else {
+        content = 
+        <>
+        <input 
+            type="text" 
+            id="nav-username-input" 
+            placeholder="Username"
+            value={state.username}
+            onChange={e => updateInput(e, "username")}
+        ></input>
+
+        <input 
+            type="password" 
+            id="nav-password-input" 
+            placeholder="Password"
+            value={state.password}
+            onChange={e => updateInput(e, "password")}
+        ></input>
+
+        <button id="nav-login-button" onClick={e => handleLogin(e)}>Log In</button>
+        </>
+    }
+
+    return (
         <nav id="nav-container">
-            <input 
-                type="text" 
-                id="nav-username-input" 
-                placeholder="Username"
-                value={state.username}
-                onChange={e => updateInput(e, "username")}
-            ></input>
-
-            <input 
-                type="password" 
-                id="nav-password-input" 
-                placeholder="Password"
-                value={state.password}
-                onChange={e => updateInput(e, "password")}
-            ></input>
-
-            <button id="nav-login-button" onClick={e => handleLogin(e)}>Log In</button>
+            {content}
         </nav>
-    )
+    );
 }
 
 export default Navbar;
