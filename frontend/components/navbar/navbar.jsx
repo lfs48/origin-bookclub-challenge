@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux'
-import {login} from '../../actions/entities/user_actions';
+import {login} from '../../actions/sessions/sessions_actions';
 import {merge} from 'lodash';
 
 const Navbar = () => {
