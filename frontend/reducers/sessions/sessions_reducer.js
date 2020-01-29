@@ -7,6 +7,21 @@ const sessionsReducer = (state = {}, action) => {
 
     switch (action.type) {
         default: return state;
+
+        // Set id key in new state to point to the id of user provided by action.
+        // Returns the new state.
+        case(LOGIN_USER): {
+            newState.id = action.user.id;
+            return newState;
+        }
+
+        // Set id key in new state to null.
+        // Returns the new state.
+        case(LOGOUT_USER): {
+            delete newState.id;
+            return newState;
+        }
+
     }
 }
 
