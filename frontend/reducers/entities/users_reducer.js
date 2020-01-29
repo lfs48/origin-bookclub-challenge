@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import {RECEIVE_USER, RECEIVE_ALL_USERS} from '../../actions/types';
+import {RECEIVE_USER, RECEIVE_ALL_USERS, LOGIN_USER} from '../../actions/types';
 
 const usersReducer = (state = {}, action) => {
     // Copy of state is created and state is frozen to ensure this function does not create side effects
@@ -11,6 +11,7 @@ const usersReducer = (state = {}, action) => {
 
         // Sets key in new state corresponding to user's id to be user info provided by action
         // Returns the new state
+        case(LOGIN_USER):
         case(RECEIVE_USER): {
             newState[action.user.id] = action.user
             return newState;
