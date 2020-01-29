@@ -48,7 +48,6 @@ const Navbar = () => {
             ></input>
 
             <button id="nav-login-button" onClick={e => handleLogin(e)}>Log In</button>
-            <button id="nav-register-button">New User? Register an Account!</button>
         </nav>
     )
 }
