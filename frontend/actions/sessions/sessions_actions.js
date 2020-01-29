@@ -20,3 +20,10 @@ export const login = (user) => (dispatch) => {
     return SessionAPIUtil.login(user)
     .then( (res) => dispatch(loginUser(res) ) );
 };
+
+// Make an http request to log out a a user.
+// Then creates and dispatches an action to remove session from state.
+export const logout = () => (dispatch) => {
+    return SessionAPIUtil.logout()
+    .then( (res) => dispatch(logoutUser() ) );
+}
