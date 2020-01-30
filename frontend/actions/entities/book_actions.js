@@ -6,7 +6,7 @@ import {RECEIVE_BOOK, RECEIVE_ALL_BOOKS} from '../types';
 
 // Action to add a book to state.
 const receiveBook = (book) => ({
-    type: RECEIVE_book,
+    type: RECEIVE_BOOK,
     book: book
 });
 
