@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {Link} from 'react-router-dom';4
+import {Link, Redirect} from 'react-router-dom';4
 import {deleteBook} from '../../actions/entities/book_actions'
 
 const Booklist = () => {
@@ -19,6 +19,7 @@ const Booklist = () => {
     }
 
     const lis = Object.entries(books).map( (keyval, i) => {
+        const id = keyval[0]
         const book = keyval[1]
         return(
             <li key={i}>
@@ -27,8 +28,8 @@ const Booklist = () => {
                 <span>Genre: {book.genre}</span>
                 {currentUser.id === book.uploader_id ? 
                     <>
-                    <button>Edit</button>
-                    <button onClick={e => handleDelete(e, keyval[0])}>Delete</button>
+                    <Link to={`/edit_book/${book.id}`}>Edit</Link>
+                    <button onClick={e => handleDelete(e, id)}>Delete</button>
                     </>
                 :<></>}
             </li>
