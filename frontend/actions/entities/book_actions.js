@@ -48,6 +48,12 @@ export const createbook = (formBook) => (dispatch) => {
     );
 };
 
+export const updateBook = (formBook) => (dispatch) => {
+    return booksAPIUtil.updateBook(formBook).then(
+        (book) => dispatch(receiveBook(book))
+    );
+};
+
 export const deleteBook = (id) => (dispatch) => {
     return booksAPIUtil.deleteBook(id).then(
         () => dispatch(removeBook(id))
