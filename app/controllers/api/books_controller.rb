@@ -17,18 +17,19 @@ class Api::BooksController < ApplicationController
     # Otherwise render errors.
     def create
         @book = Book.new(book_params)
+        debugger
         if @book.save
             render "api/books/show"
         else
             render json: @book.errors.full_messages, status: 422
         end
     end
-    
+
     private
 
     # Filters params so that only params with a key of book is allowed, and only reads the id, title, author, and genre keys
     def book_params
-        params.require(:book).permit(:id, :title, :author, :genre)
+        params.require(:book).permit(:id, :title, :author, :genre, :uploader_id)
     end
 
 end
