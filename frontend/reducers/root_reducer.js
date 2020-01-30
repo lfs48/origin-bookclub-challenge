@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import entitiesReducer from './entities/users_reducer';
+import entitiesReducer from './entities/entities_reducer';
 import sessionsReducer from './sessions/sessions_reducer';
 
 // Combines all other high-level reducers to generate redux state.
