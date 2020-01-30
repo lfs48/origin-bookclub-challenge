@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
     has_many :favorites
 
-    has_many :favorite_books
+    has_many :favorite_books,
         through: :favorites,
         source: :book
 
