@@ -8,7 +8,9 @@ const Book = ({match}) => {
     const dispatch = useDispatch();
 
     const [state, setState] = useState({
-        noteBody: ""
+        noteBody: "",
+        editedNoteBody: "",
+        editing: false
     });
     
     const {notes, book, currentUser} = useSelector(
@@ -36,6 +38,14 @@ const Book = ({match}) => {
         dispatch(createNote(note));
     }
 
+    const handleEditNote = (e, id) => {
+        e.preventDefault();
+        const newState = merge({}, state);
+        newState.editing = id;
+        newState.editedNoteBody = notes[id].body
+        setState(newState);
+    }
+
     const handleDeleteNote = (e, id) => {
         e.preventDefault();
         dispatch(deleteNote(id));
@@ -43,12 +53,27 @@ const Book = ({match}) => {
 
     const lis = Object.values(notes).map(note => {
         if (note.book_id === book.id) {
-            return (
-                <li key={note.id}>
-                <span>{note.body}</span>
-                <button onClick={e => handleDeleteNote(e, note.id)}>X</button>
-                </li>
-            )
+            if (state.editing !== note.id) {
+                return (
+                    <li key={note.id}>
+                    <span>{note.body}</span>
+                    <button onClick={e => handleEditNote(e, note.id)}>Edit</button>
+                    <button onClick={e => handleDeleteNote(e, note.id)}>X</button>
+                    </li>
+                )
+            } else {
+                return (
+                    <li key={note.id}>
+                        <form>
+                            <input
+                                type="text"
+                                value={state.editedNoteBody}
+                                onChange={e => handleInput(e, editedNoteBody)}
+                            ></input>
+                        </form>
+                    </li>
+                )
+            }
         } else {
             return <></>
         }
