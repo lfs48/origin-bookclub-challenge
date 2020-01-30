@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_022249) do
+ActiveRecord::Schema.define(version: 2020_01_30_163442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_01_28_022249) do
     t.string "genre", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "uploader"
     t.index ["genre"], name: "index_books_on_genre"
     t.index ["title", "author"], name: "index_books_on_title_and_author", unique: true
   end
