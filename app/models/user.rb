@@ -29,6 +29,12 @@ class User < ApplicationRecord
         through: :favorites,
         source: :book
 
+    has_many :notes
+
+    has_many :book_notes
+        through: :notes,
+        source: :book
+
     attr_reader :password
 
     # Looks up user in db by username, then validates provided password

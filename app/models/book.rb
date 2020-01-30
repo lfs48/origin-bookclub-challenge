@@ -27,4 +27,10 @@ class Book < ApplicationRecord
         through: :favorites,
         source: :user
 
+    has_many :notes
+
+    has_many :user_notes
+        through: :notes,
+        source: :user
+
 end
