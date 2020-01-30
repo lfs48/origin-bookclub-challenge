@@ -6,6 +6,6 @@ class Book < ApplicationRecord
     belongs_to :uploader,
         class_name: :User,
         primary_key: :id,
-        foreign_key: :author_id
+        foreign_key: :uploader_id
 
 end

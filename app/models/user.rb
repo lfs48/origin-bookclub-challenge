@@ -9,7 +9,7 @@ class User < ApplicationRecord
     has_many :uploads,
         class_name: :Book,
         primary_key: :id,
-        foreign_key: :user_id
+        foreign_key: :uploader_id
 
     attr_reader :password
 
