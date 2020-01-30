@@ -5,6 +5,7 @@ export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
 
 export const RECEIVE_BOOK = "RECEIVE_BOOK";
 export const RECEIVE_ALL_BOOKS = "RECEIVE_ALL_BOOKS";
+export const REMOVE_BOOK = "REMOVE_BOOK";
 
 // Sessions
 
