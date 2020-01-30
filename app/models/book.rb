@@ -8,4 +8,10 @@ class Book < ApplicationRecord
         primary_key: :id,
         foreign_key: :uploader_id
 
+    has_many :favorites
+
+    has_many :favorited_users
+        through: :favorites,
+        source: :user
+
 end

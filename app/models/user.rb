@@ -11,6 +11,12 @@ class User < ApplicationRecord
         primary_key: :id,
         foreign_key: :uploader_id
 
+    has_many :favorites
+
+    has_many :favorite_books
+        through: :favorites,
+        source: :book
+
     attr_reader :password
 
     # Looks up user in db by username, then validates provided password
