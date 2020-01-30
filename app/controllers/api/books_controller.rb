@@ -1,4 +1,4 @@
-class Api::UsersController < ApplicationController
+class Api::BooksController < ApplicationController
 
     # Retrieves all books from db, then renders api/books/index view
     def index
@@ -23,6 +23,7 @@ class Api::UsersController < ApplicationController
             render json: @book.errors.full_messages, status: 422
         end
     end
+    
     private
 
     # Filters params so that only params with a key of book is allowed, and only reads the id, title, author, and genre keys
