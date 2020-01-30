@@ -1,5 +1,8 @@
 class Api::BooksController < ApplicationController
 
+    before_action :get_book, only: [:show, :update, :destroy]
+    before_action :ensure_author, only: [:update, :destroy]
+
     # Retrieves all books from db, then renders api/books/index view
     def index
         @books = Book.all
@@ -8,7 +11,6 @@ class Api::BooksController < ApplicationController
 
     # Retrieves a book by id from db, then renders api/books/show view
     def show
-        @book = Book.find(book_params.id)
         render "api/books/show"
     end
 
@@ -25,7 +27,6 @@ class Api::BooksController < ApplicationController
     end
 
     def destroy
-        @book = Book.find(params[:id])
         @book.destroy
     end
 
@@ -34,6 +35,14 @@ class Api::BooksController < ApplicationController
     # Filters params so that only params with a key of book is allowed, and only reads the id, title, author, and genre keys
     def book_params
         params.require(:book).permit(:title, :author, :genre, :uploader_id)
+    end
+
+    def get_book
+        @book = Book.find(params[:id])
+    end
+
+    def ensure_author
+        render json: "You don't have permission to do that", status: 422 unless @book.uploader_id == current_user.id
     end
 
 end
