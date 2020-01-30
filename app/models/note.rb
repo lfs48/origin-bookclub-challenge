@@ -12,4 +12,6 @@
 
 class Note < ApplicationRecord
 
+    validates :user_id, :book_id, :body, presence: true
+
 end
