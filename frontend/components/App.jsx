@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useSelector} from 'react';
 import {useDispatch} from 'react-redux';
 import {Route} from 'react-router-dom';
 import Navbar from './navbar/navbar';
@@ -9,12 +9,16 @@ import Bookform from './books/bookform';
 import Book from './books/book';
 import { AuthRoute, ProtectedRoute } from './routes/routes';
 import {fetchBooks} from '../actions/entities/book_actions';
+import { fetchAllNotes } from '../actions/entities/note_actions';
 
 const App = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(() => {dispatch(fetchBooks(), []);
+    useEffect(() => {
+        dispatch(fetchBooks())
+        .then(dispatch(fetchAllNotes())
+        , []);
     });
 
     return(
