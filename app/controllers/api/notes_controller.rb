@@ -4,8 +4,11 @@ class Api::NotesController < ApplicationController
     before_action :ensure_author, only: [:update, :destroy]
 
     def index
-        params
-        @notes = Note.find_by(user_id: note_params[:user_id])
+        if (params[:note])
+            @notes = Note.where(:user_id => note_params[:user_id])
+        else
+            @notes = Note.all
+        end
         render "api/notes/index"
     end
 
