@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom';
 import Navbar from './navbar/navbar';
 import Splash from './splash/splash';
 import Home from './home/home';
-import Books from './home/booklist';
+import Books from './books/booklist';
 import { AuthRoute, ProtectedRoute } from './routes/routes';
 import {fetchBooks} from '../actions/entities/book_actions';
 
