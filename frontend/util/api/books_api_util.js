@@ -10,7 +10,7 @@ export const fetchBook = (id) => {
 };
 
 // GET request for collection of all books.
-export const fetchbooks = () => {
+export const fetchBooks = () => {
     return $.ajax({
         method: 'GET',
         url: 'api/books'
@@ -19,7 +19,7 @@ export const fetchbooks = () => {
 
 // POST request to create a new book.
 // book should be json object containing title, author, and genre keys.
-export const createbook = (book) => {
+export const createBook = (book) => {
     return $.ajax({
         method: 'POST',
         url: 'api/books',

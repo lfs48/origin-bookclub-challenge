@@ -21,7 +21,7 @@ const receiveAllBooks = (books) => ({
 // Makes an http request for a book by id.
 // Then creates and dispatches an action to add that book to state.
 export const fetchBook = (id) => (dispatch) => {
-    return booksAPIUtil.fetchbook(id).then(
+    return booksAPIUtil.fetchBook(id).then(
         (book) => dispatch( receiveBook(book) )
     );
 };
@@ -29,7 +29,7 @@ export const fetchBook = (id) => (dispatch) => {
 // Makes an http request for collection of all books.
 // Then creates and dispatches an action to add books to state.
 export const fetchBooks = () => (dispatch) => {
-    return booksAPIUtil.fetchbooks().then(
+    return booksAPIUtil.fetchBooks().then(
         (books) => dispatch(receiveAllBooks(books))
     );
 };
