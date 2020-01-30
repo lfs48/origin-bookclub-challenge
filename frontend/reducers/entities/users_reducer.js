@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import {RECEIVE_USER, RECEIVE_ALL_USERS, LOGIN_USER} from '../../actions/types';
+import {RECEIVE_USER, RECEIVE_ALL_USERS, LOGIN_USER, RECEIVE_NOTE} from '../../actions/types';
 
 const usersReducer = (state = {}, action) => {
     // Copy of state is created and state is frozen to ensure this function does not create side effects
@@ -20,6 +20,11 @@ const usersReducer = (state = {}, action) => {
         // Returns the users collection provided by action to replace previous state
         case(RECEIVE_ALL_USERS): {
             return action.users;
+        }
+
+        case(RECEIVE_NOTE): {
+            newState[action.note.user_id] ? newState[action.note.user_id].notes.push(action.note.id) : null;
+            return newState;
         }
     }
 };
