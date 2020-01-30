@@ -17,7 +17,6 @@ class Api::BooksController < ApplicationController
     # Otherwise render errors.
     def create
         @book = Book.new(book_params)
-        debugger
         if @book.save
             render "api/books/show"
         else
