@@ -18,7 +18,7 @@ export const favorite = (userId, bookId) => {
 export const unfavorite = (userId, bookId) => {
     return $.ajax({
         method: 'DELETE',
-        url: 'api/favorites',
+        url: 'api/favorite',
         data: {
             favorite: {
                 user_id: userId, 
