@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Book < ApplicationRecord
 
     validates :title, :author, :genre, presence: true
     validates :title, uniqueness: {scope: :author}
