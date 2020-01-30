@@ -4,6 +4,7 @@ import {Route} from 'react-router-dom';
 import Navbar from './navbar/navbar';
 import Splash from './splash/splash';
 import Home from './home/home';
+import Books from './home/booklist';
 import { AuthRoute, ProtectedRoute } from './routes/routes';
 import {fetchBooks} from '../actions/entities/book_actions';
 
@@ -17,7 +18,8 @@ const App = () => {
     return(
     <main id="app-container">
         <Navbar/>
-        <ProtectedRoute path="/" component={Home} />
+        <ProtectedRoute path="/books" component={Books} />
+        <ProtectedRoute path="/home" component={Home} />
         <AuthRoute path="/" component={Splash} />
     </main>
     );
