@@ -43,7 +43,7 @@ const Splash = () => {
             ></input>
 
             <input 
-                type="text" 
+                type="password" 
                 id="splash-password-input" 
                 placeholder="Password"
                 value={state.password}
