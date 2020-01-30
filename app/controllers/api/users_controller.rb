@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
         render "api/users/index"
     end
 
-    # Creates a user object from filtered params, then renders api/users/show view if successfully persists to db, or renders errors otherwise
+    # Creates a user object from filtered params, then logs user in and renders api/users/show view if successfully persists to db, or renders errors otherwise
     def create
         @user = User.new(user_params)
         if @user.save
