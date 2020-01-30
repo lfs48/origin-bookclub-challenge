@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {createNote} from '../../actions/entities/note_actions';
+import {createNote, fetchNotes} from '../../actions/entities/note_actions';
 import {merge} from 'lodash';
 
 const Book = ({match}) => {
@@ -10,14 +10,15 @@ const Book = ({match}) => {
     const [state, setState] = useState({
         noteBody: ""
     });
-
-    const {currentUser, book} = useSelector(
+    
+    const {notes, book, currentUser} = useSelector(
         state => ({
+            notes: state.entities.notes,
             currentUser: state.entities.users[state.sessions.id],
             book: state.entities.books[match.params.id] || {id:"",title:"",author:"",genre:""}
         })
     );
-
+    
     const handleInput = (e, field) => {
         e.preventDefault();
         const newState = merge({}, state);
@@ -26,6 +27,7 @@ const Book = ({match}) => {
     }
 
     const handleAddNote = (e) => {
+        debugger
         e.preventDefault();
         const note = {
             user_id: currentUser.id,
@@ -35,11 +37,22 @@ const Book = ({match}) => {
         dispatch(createNote(note));
     }
 
+    const lis = Object.values(notes).map(note => {
+        if (note.book_id === book.id) {
+            return <li key={note.id}>{note.body}</li>
+        } else {
+            return <></>
+        }
+    });
+
     return(
         <section id="book-container">
             <header>Title: {book.title}</header>
             <span>Author: {book.author}</span>
             <span>Genre: {book.genre}</span>
+            <ul>
+                {lis}
+            </ul>
             <input
                 type="text"
                 value={state.noteBody}
