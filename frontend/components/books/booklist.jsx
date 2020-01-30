@@ -1,6 +1,7 @@
 import React from 'react';
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom';4
+import {deleteBook} from '../../actions/entities/book_actions'
 
 const Booklist = () => {
     const {books, currentUser} = useSelector(
@@ -10,7 +11,15 @@ const Booklist = () => {
         })
     );
 
-    const lis = Object.values(books).map( (book, i) => {
+    const dispatch = useDispatch();
+
+    const handleDelete = (e, id) => {
+        e.preventDefault();
+        dispatch(deleteBook(id))
+    }
+
+    const lis = Object.entries(books).map( (keyval, i) => {
+        const book = keyval[1]
         return(
             <li key={i}>
                 <span>Title: {book.title}</span>
@@ -19,7 +28,7 @@ const Booklist = () => {
                 {currentUser.id === book.uploader_id ? 
                     <>
                     <button>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={e => handleDelete(e, keyval[0])}>Delete</button>
                     </>
                 :<></>}
             </li>
