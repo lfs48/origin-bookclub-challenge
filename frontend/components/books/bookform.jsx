@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {createbook, updateBook} from '../../actions/entities/book_actions';
 import {merge} from 'lodash';
 
-const Bookform = ({match}) => {
+const Bookform = ({match, history}) => {
 
     const {currentUser, currentBook} = useSelector(
         state => ({
@@ -37,9 +37,11 @@ const Bookform = ({match}) => {
         };
         if (currentBook) {
             book.id = currentBook.id;
-            dispatch(updateBook(book));
+            dispatch(updateBook(book))
+            .then(history.push('/books'));
         } else {
-            dispatch(createbook(book));
+            dispatch(createbook(book))
+            .then(history.push('/books'));
         }
     }
 
