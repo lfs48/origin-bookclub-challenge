@@ -1,23 +1,24 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {createbook} from '../../actions/entities/book_actions';
+import {createbook, updateBook} from '../../actions/entities/book_actions';
 import {merge} from 'lodash';
 
-const Bookform = () => {
+const Bookform = ({match}) => {
+
+    const {currentUser, currentBook} = useSelector(
+        state => ({
+            currentUser: state.entities.users[state.sessions.id],
+            currentBook: match.params.id ? state.entities.books[match.params.id] : null
+        })
+    );
 
     const [state, setState] = useState({
-        title: "",
-        author: "",
-        genre: "",
+        title: currentBook ? currentBook.title : "",
+        author: currentBook ? currentBook.author : "",
+        genre: currentBook ? currentBook.genre : "",
     });
 
     const dispatch = useDispatch();
-
-    const {currentUser} = useSelector(
-        state => ({
-            currentUser: state.entities.users[state.sessions.id]
-        })
-    );
 
     const updateInput = (e, field) => {
         e.preventDefault();
@@ -34,7 +35,12 @@ const Bookform = () => {
             genre: state.genre,
             uploader_id: parseInt(currentUser.id, 10)
         };
-        dispatch(createbook(book));
+        if (currentBook) {
+            book.id = currentBook.id;
+            dispatch(updateBook(book));
+        } else {
+            dispatch(createbook(book));
+        }
     }
 
     return(
