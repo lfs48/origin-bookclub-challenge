@@ -5,6 +5,7 @@ import Navbar from './navbar/navbar';
 import Splash from './splash/splash';
 import Home from './home/home';
 import Books from './books/booklist';
+import Bookform from './books/bookform';
 import { AuthRoute, ProtectedRoute } from './routes/routes';
 import {fetchBooks} from '../actions/entities/book_actions';
 
@@ -18,6 +19,7 @@ const App = () => {
     return(
     <main id="app-container">
         <Navbar/>
+        <ProtectedRoute path="/create_book" component={Bookform} />
         <ProtectedRoute path="/books" component={Books} />
         <ProtectedRoute path="/home" component={Home} />
         <AuthRoute path="/" component={Splash} />
