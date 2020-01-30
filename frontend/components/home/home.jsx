@@ -7,6 +7,7 @@ const Home = () => {
         <section id="home-container">
             <header>Origin Bookclub</header>
             <Link to="/books">Browse Books</Link>
+            <Link to="/create_book">Add a Book</Link>
             <button>Favorites</button>
         </section>
     );
