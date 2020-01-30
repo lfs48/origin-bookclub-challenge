@@ -6,13 +6,13 @@ import {RECEIVE_USER, RECEIVE_ALL_USERS} from '../types';
 // Standard actions
 
 // Action to add a user to state.
-const receiveUser = (user) => ({
+export const receiveUser = (user) => ({
     type: RECEIVE_USER,
     user: user
 });
 
 // Action to add collection of users to state.
-const receiveAllUsers = (users) => ({
+export const receiveAllUsers = (users) => ({
     type: RECEIVE_ALL_USERS,
     users: users
 });
