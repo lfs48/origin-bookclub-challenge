@@ -8,7 +8,7 @@ const Home = () => {
             <header>Origin Bookclub</header>
             <Link to="/books">Browse Books</Link>
             <Link to="/create_book">Add a Book</Link>
-            <button>Favorites</button>
+            <Link to="/favorites">Your Favorites</Link>
         </section>
     );
 }
