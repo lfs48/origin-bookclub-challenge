@@ -6,6 +6,11 @@ class User < ApplicationRecord
     validates :username, :session_token, uniqueness: true
     validates :password, allow_nil: true, length: {minimum: 8}
 
+    has_many :uploads,
+        class_name: :Book,
+        primary_key: :id,
+        foreign_key: :user_id
+
     attr_reader :password
 
     # Looks up user in db by username, then validates provided password
