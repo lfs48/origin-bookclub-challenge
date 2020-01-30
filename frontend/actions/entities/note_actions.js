@@ -33,8 +33,16 @@ export const fetchNote = (id) => (dispatch) => {
 
 // Makes an http request for collection of all notes.
 // Then creates and dispatches an action to add notes to state.
-export const fetchNotes = (userId) => (dispatch) => {
-    return notesAPIUtil.fetchNotes(userId).then(
+export const fetchAllNotes = () => (dispatch) => {
+    return notesAPIUtil.fetchAllNotes().then(
+        (notes) => dispatch(receiveUserNotes(notes))
+    );
+};
+
+// Makes an http request for collection of all notes by a user.
+// Then creates and dispatches an action to add notes to state.
+export const fetchUserNotes = (userId) => (dispatch) => {
+    return notesAPIUtil.fetchUserNotes(userId).then(
         (notes) => dispatch(receiveUserNotes(notes))
     );
 };

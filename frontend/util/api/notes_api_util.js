@@ -10,7 +10,15 @@ export const fetchNote = (id) => {
 };
 
 // GET request for collection of all notes.
-export const fetchNotes = (userId) => {
+export const fetchAllNotes = () => {
+    return $.ajax({
+        method: 'GET',
+        url: 'api/notes'
+    });
+};
+
+// GET request for collection of specific user's notes notes.
+export const fetchUserNotes = (userId) => {
     return $.ajax({
         method: 'GET',
         url: 'api/notes',
