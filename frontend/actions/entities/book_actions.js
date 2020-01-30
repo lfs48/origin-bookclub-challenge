@@ -1,5 +1,5 @@
 import * as booksAPIUtil from '../../util/api/books_api_util';
-import {RECEIVE_BOOK, RECEIVE_ALL_BOOKS} from '../types';
+import {RECEIVE_BOOK, RECEIVE_ALL_BOOKS, REMOVE_BOOK} from '../types';
 
 
 // Standard actions
@@ -15,6 +15,11 @@ const receiveAllBooks = (books) => ({
     type: RECEIVE_ALL_BOOKS,
     books: books
 });
+
+const removeBook = (id) => ({
+    type: REMOVE_BOOK,
+    id: id
+})
 
 // Thunk actions
 
@@ -40,5 +45,11 @@ export const fetchBooks = () => (dispatch) => {
 export const createbook = (formBook) => (dispatch) => {
     return booksAPIUtil.createBook(formBook).then(
         (book) => dispatch(receiveBook(book))
+    );
+};
+
+export const deleteBook = (id) => (dispatch) => {
+    return booksAPIUtil.deleteBook(id).then(
+        () => dispatch(removeBook(id))
     );
 };
