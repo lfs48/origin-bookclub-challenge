@@ -7,7 +7,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
         render={
             (props) => {
                 if (loggedIn) {
-                    return (<Redirect to="/dashboard" />);
+                    return (<Redirect to="/home" />);
                 } else {
                     return (<Component {...props} />);
                 }
