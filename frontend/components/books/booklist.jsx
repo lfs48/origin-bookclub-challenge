@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom';4
 import {deleteBook} from '../../actions/entities/book_actions'
 import {createFavorite} from '../../actions/entities/favorite_actions';
 
-const Booklist = () => {
+const Booklist = ({match}) => {
+
     const {books, currentUser} = useSelector(
         state => ({
             books: state.entities.books,
@@ -31,12 +32,13 @@ const Booklist = () => {
     const lis = Object.entries(books).map( (keyval, i) => {
         const id = parseInt(keyval[0]);
         const book = keyval[1]
+        if (match.path === "/favorites" && !currentUser.favorites.includes(id) ) {return <></>}
         return(
             <li key={i}>
                 <span>Title: {book.title}</span>
                 <span>Author: {book.author}</span>
                 <span>Genre: {book.genre}</span>
-                {currentUser.favorites.includes(id) ?
+                {!currentUser.favorites.includes(id) ?
                 <button onClick={e => handleFavorite(e, id)}>Add to Favorites</button>
                 :
                 <button onClick={e => handleUnfavorite(e, id)}>Remove from Favorites</button>
