@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom';4
 import {deleteBook} from '../../actions/entities/book_actions'
+import {createFavorite} from '../../actions/entities/favorite_actions';
 
 const Booklist = () => {
     const {books, currentUser} = useSelector(
@@ -15,7 +16,12 @@ const Booklist = () => {
 
     const handleDelete = (e, id) => {
         e.preventDefault();
-        dispatch(deleteBook(id))
+        dispatch(deleteBook(id));
+    }
+
+    const handleFavorite = (e, id) => {
+        e.preventDefault();
+        dispatch(createFavorite(currentUser.id, id));
     }
 
     const lis = Object.entries(books).map( (keyval, i) => {
@@ -26,6 +32,7 @@ const Booklist = () => {
                 <span>Title: {book.title}</span>
                 <span>Author: {book.author}</span>
                 <span>Genre: {book.genre}</span>
+                <button onClick={e => handleFavorite(e, id)}>Add to Favorites</button>
                 {currentUser.id === book.uploader_id ? 
                     <>
                     <Link to={`/edit_book/${book.id}`}>Edit</Link>
