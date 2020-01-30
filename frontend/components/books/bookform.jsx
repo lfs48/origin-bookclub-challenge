@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {createbook} from '../../actions/entities/book_actions';
 import {merge} from 'lodash';
 
 const Bookform = () => {
@@ -9,11 +11,23 @@ const Bookform = () => {
         genre: ""
     });
 
+    const dispatch = useDispatch();
+
     const updateInput = (e, field) => {
         e.preventDefault();
         const newState = merge({}, state);
         newState[field] = e.target.value;
         setState(newState);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const book = {
+            title: state.title,
+            author: state.author,
+            genre: state.genre
+        };
+        dispatch(createbook(book));
     }
 
     return(
@@ -39,6 +53,7 @@ const Bookform = () => {
                 value={state.genre}
                 onChange={e => updateInput(e, "genre")}
             ></input>
+            <button onClick={e => handleSubmit(e)}>Submit</button>
         </form>
     );
 }
