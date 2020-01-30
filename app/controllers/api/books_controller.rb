@@ -24,11 +24,16 @@ class Api::BooksController < ApplicationController
         end
     end
 
+    def destroy
+        @book = Book.find(params[:id])
+        @book.destroy
+    end
+
     private
 
     # Filters params so that only params with a key of book is allowed, and only reads the id, title, author, and genre keys
     def book_params
-        params.require(:book).permit(:id, :title, :author, :genre, :uploader_id)
+        params.require(:book).permit(:title, :author, :genre, :uploader_id)
     end
 
 end
