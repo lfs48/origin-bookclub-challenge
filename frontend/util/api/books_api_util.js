@@ -26,3 +26,11 @@ export const createBook = (book) => {
         data: { book: book }
     });
 };
+
+// POST request to delete a book by id.
+export const deleteBook = (id) => {
+    return $.ajax({
+        method: 'DELETE',
+        url: `api/books/${id}`
+    });
+};
