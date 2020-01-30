@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {createNote, fetchNotes} from '../../actions/entities/note_actions';
+import {createNote, deleteNote} from '../../actions/entities/note_actions';
 import {merge} from 'lodash';
 
 const Book = ({match}) => {
@@ -27,7 +27,6 @@ const Book = ({match}) => {
     }
 
     const handleAddNote = (e) => {
-        debugger
         e.preventDefault();
         const note = {
             user_id: currentUser.id,
@@ -37,9 +36,19 @@ const Book = ({match}) => {
         dispatch(createNote(note));
     }
 
+    const handleDeleteNote = (e, id) => {
+        e.preventDefault();
+        dispatch(deleteNote(id));
+    }
+
     const lis = Object.values(notes).map(note => {
         if (note.book_id === book.id) {
-            return <li key={note.id}>{note.body}</li>
+            return (
+                <li key={note.id}>
+                <span>{note.body}</span>
+                <button onClick={e => handleDeleteNote(e, note.id)}>X</button>
+                </li>
+            )
         } else {
             return <></>
         }
