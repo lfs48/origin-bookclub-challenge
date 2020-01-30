@@ -27,6 +27,17 @@ export const createBook = (book) => {
     });
 };
 
+// POST request to update a new book.
+// book should be json object containing title, author, and genre keys.
+export const updateBook = (book) => {
+    return $.ajax({
+        method: 'PATCH',
+        url: `api/books/${book.id}`,
+        data: { book: book }
+    });
+};
+
+
 // POST request to delete a book by id.
 export const deleteBook = (id) => {
     return $.ajax({
