@@ -1,11 +1,12 @@
 import React from 'react';
 import {useSelector} from 'react-redux'
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';4
 
 const Booklist = () => {
-    const {books} = useSelector(
+    const {books, currentUser} = useSelector(
         state => ({
-            books: state.entities.books
+            books: state.entities.books,
+            currentUser: state.entities.users[state.sessions.id]
         })
     );
 
@@ -15,6 +16,12 @@ const Booklist = () => {
                 <span>Title: {book.title}</span>
                 <span>Author: {book.author}</span>
                 <span>Genre: {book.genre}</span>
+                {currentUser.id === book.uploader_id ? 
+                    <>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                    </>
+                :<></>}
             </li>
         );
     });
