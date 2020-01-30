@@ -21,6 +21,7 @@ const App = () => {
         <Navbar/>
         <ProtectedRoute path="/edit_book/:id" component={Bookform} />
         <ProtectedRoute path="/create_book" component={Bookform} />
+        <ProtectedRoute path="/favorites" component={Books} />
         <ProtectedRoute path="/books" component={Books} />
         <ProtectedRoute path="/home" component={Home} />
         <AuthRoute path="/" component={Splash} />
