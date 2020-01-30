@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {createbook} from '../../actions/entities/book_actions';
 import {merge} from 'lodash';
 
@@ -8,10 +8,16 @@ const Bookform = () => {
     const [state, setState] = useState({
         title: "",
         author: "",
-        genre: ""
+        genre: "",
     });
 
     const dispatch = useDispatch();
+
+    const {currentUser} = useSelector(
+        state => ({
+            currentUser: state.entities.users[state.sessions.id]
+        })
+    );
 
     const updateInput = (e, field) => {
         e.preventDefault();
@@ -25,7 +31,8 @@ const Bookform = () => {
         const book = {
             title: state.title,
             author: state.author,
-            genre: state.genre
+            genre: state.genre,
+            uploader_id: parseInt(currentUser.id, 10)
         };
         dispatch(createbook(book));
     }
