@@ -24,15 +24,23 @@ const Booklist = () => {
         dispatch(createFavorite(currentUser.id, id));
     }
 
+    const handleUnfavorite = (e, id) => {
+        e.preventDefault();
+    }
+
     const lis = Object.entries(books).map( (keyval, i) => {
-        const id = keyval[0]
+        const id = parseInt(keyval[0]);
         const book = keyval[1]
         return(
             <li key={i}>
                 <span>Title: {book.title}</span>
                 <span>Author: {book.author}</span>
                 <span>Genre: {book.genre}</span>
+                {currentUser.favorites.includes(id) ?
                 <button onClick={e => handleFavorite(e, id)}>Add to Favorites</button>
+                :
+                <button onClick={e => handleUnfavorite(e, id)}>Remove from Favorites</button>
+                }
                 {currentUser.id === book.uploader_id ? 
                     <>
                     <Link to={`/edit_book/${book.id}`}>Edit</Link>
