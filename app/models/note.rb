@@ -14,4 +14,8 @@ class Note < ApplicationRecord
 
     validates :user_id, :book_id, :body, presence: true
 
+    belongs_to :user, inverse_of: :notes
+
+    belongs_to :book, inverse_of: :notes
+
 end
