@@ -17,6 +17,11 @@ const notesReducer = (state = {}, action) => {
         case(RECEIVE_USER_NOTES): {
             return action.notes
         }
+
+        case(REMOVE_NOTE): {
+            delete newState[action.id];
+            return newState;
+        }
     }
 };
 
