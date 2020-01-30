@@ -9,6 +9,14 @@ const notesReducer = (state = {}, action) => {
     switch (action.type) {
         default: return state;
 
+        case(RECEIVE_NOTE): {
+            newState[action.note.id] = action.note;
+            return newState;
+        }
+
+        case(RECEIVE_USER_NOTES): {
+            return action.notes
+        }
     }
 };
 
