@@ -26,6 +26,14 @@ class Api::BooksController < ApplicationController
         end
     end
 
+    def update
+        if @book.update(book_params)
+            render "api/books/show"
+        else
+            render @book.errors.full_messages, status: 422
+        end
+    end
+
     def destroy
         @book.destroy
     end
