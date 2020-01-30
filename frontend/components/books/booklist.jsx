@@ -23,6 +23,7 @@ const Booklist = () => {
             <ul>
                 {lis}
             </ul>
+            <Link to="/create_book">Add a Book</Link>
         </section>
     );
 }
