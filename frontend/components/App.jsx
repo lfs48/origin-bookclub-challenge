@@ -19,6 +19,7 @@ const App = () => {
     return(
     <main id="app-container">
         <Navbar/>
+        <ProtectedRoute path="/edit_book/:id" component={Bookform} />
         <ProtectedRoute path="/create_book" component={Bookform} />
         <ProtectedRoute path="/books" component={Books} />
         <ProtectedRoute path="/home" component={Home} />
