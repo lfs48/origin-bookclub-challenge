@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {createNote, deleteNote} from '../../actions/entities/note_actions';
+import {createNote, deleteNote, updateNote} from '../../actions/entities/note_actions';
 import {merge} from 'lodash';
 
 const Book = ({match}) => {
@@ -9,7 +9,7 @@ const Book = ({match}) => {
 
     const [state, setState] = useState({
         noteBody: "",
-        editedNoteBody: "",
+        editNoteBody: "",
         editing: false
     });
     
@@ -42,8 +42,21 @@ const Book = ({match}) => {
         e.preventDefault();
         const newState = merge({}, state);
         newState.editing = id;
-        newState.editedNoteBody = notes[id].body
+        newState.editNoteBody = notes[id].body
         setState(newState);
+    }
+
+    const handleSubmitEdit = (e, id) => {
+        e.preventDefault();
+        const newState = merge({}, state);
+        const note = {
+            id: id,
+            body: state.editNoteBody
+        };
+        newState.editNoteBody = "";
+        newState.editing = false;
+        dispatch(updateNote(note))
+        .then(setState(newState));
     }
 
     const handleDeleteNote = (e, id) => {
@@ -67,10 +80,11 @@ const Book = ({match}) => {
                         <form>
                             <input
                                 type="text"
-                                value={state.editedNoteBody}
-                                onChange={e => handleInput(e, editedNoteBody)}
+                                value={state.editNoteBody}
+                                onChange={e => handleInput(e, "editNoteBody")}
                             ></input>
                         </form>
+                        <button onClick={e => handleSubmitEdit(e, note.id)}>Submit</button>
                     </li>
                 )
             }
