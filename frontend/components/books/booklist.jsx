@@ -36,9 +36,7 @@ const Booklist = ({match}) => {
         if (match.path === "/favorites" && !currentUser.favorites.includes(id) ) {return <></>}
         return(
             <li key={i}>
-                <span>Title: {book.title}</span>
-                <span>Author: {book.author}</span>
-                <span>Genre: {book.genre}</span>
+                <Link to={`/book/${book.id}`}>{book.title}</Link>
                 {!currentUser.favorites.includes(id) ?
                 <button onClick={e => handleFavorite(e, id)}>Add to Favorites</button>
                 :
