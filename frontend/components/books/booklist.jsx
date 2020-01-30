@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, Redirect} from 'react-router-dom';4
 import {deleteBook} from '../../actions/entities/book_actions'
-import {createFavorite} from '../../actions/entities/favorite_actions';
+import {createFavorite, removeFavorite} from '../../actions/entities/favorite_actions';
 
 const Booklist = ({match}) => {
 
@@ -27,6 +27,7 @@ const Booklist = ({match}) => {
 
     const handleUnfavorite = (e, id) => {
         e.preventDefault();
+        dispatch(removeFavorite(currentUser.id, id));
     }
 
     const lis = Object.entries(books).map( (keyval, i) => {
