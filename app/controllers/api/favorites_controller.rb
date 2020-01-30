@@ -11,10 +11,9 @@ class Api::FavoritesController < ApplicationController
 
     def destroy
         favorite = Favorite.find_by(book_id: params[:favorite][:book_id], user_id: params[:favorite][:user_id])
-        @post = favorite.post
-        favoriteDup = favorite.dup
+        @user = favorite.user
         favorite.destroy
-        render json: favoriteDup
+        render "api/users/show"
     end
 
     private
