@@ -29,7 +29,7 @@ class Book < ApplicationRecord
 
     has_many :notes
 
-    has_many :user_notes
+    has_many :user_notes,
         through: :notes,
         source: :user
 

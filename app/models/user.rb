@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
     has_many :notes
 
-    has_many :book_notes
+    has_many :book_notes,
         through: :notes,
         source: :book
 
