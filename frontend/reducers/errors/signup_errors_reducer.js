@@ -8,6 +8,14 @@ const signupErrorsReducer = (state = {}, action) => {
 
     switch (action.type) {
         default: return state;
+
+        case(RECEIVE_SIGNUP_ERRORS): {
+            return action.errors;
+        }
+
+        case(LOGIN_USER): {
+            return [];
+        }
     }
 };
 
