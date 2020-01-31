@@ -1,10 +1,10 @@
-(Live Site)[https://origin-bookclub.herokuapp.com/#/home]
+# [Live Site](https://origin-bookclub.herokuapp.com/#/home)
 
-# Stack
+## Stack
 
 This project was made using a Ruby on Rails backend, React/Redux frontend, and postgres database.
 
-# API
+## API
 
 Prefix | Verb | URI Pattern    
 -------|------|-------------
@@ -26,7 +26,7 @@ api_note | PATCH | /api/notes/:id
 api_note | PUT |    /api/notes/:id
 api_note | DELETE | /api/notes/:id
 
-# Instructions
+## Instructions
 
 To run this project locally, perform the following steps:
 
