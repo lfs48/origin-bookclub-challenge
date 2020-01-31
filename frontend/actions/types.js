@@ -15,3 +15,7 @@ export const REMOVE_NOTE = "REMOVE_NOTE";
 
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
+
+// Errors
+
+export const RECEIVE_SIGNUP_ERRORS = "RECEIVE_SIGNUP_ERRORS";
