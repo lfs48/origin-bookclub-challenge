@@ -1,0 +1,44 @@
+#nav-container {
+    background-color: rgb(252, 186, 3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75em;
+}
+
+#nav-left {
+    font-size: 2.5em;
+    font-weight: bolder;
+    margin-left: 20%;
+    margin-right: 2.5em;
+    white-space: nowrap;
+}
+
+#nav-right {
+    font-size: 1.5em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-right: 20%;
+}
+
+#nav-right > input {
+    font-size: 0.75em;
+    padding: 0.25em;
+    margin-right: 1em;
+    width: 8em;
+}
+
+#nav-right > span {
+    margin-right: 1em;
+}
+
+#nav-right > button {
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(41, 87, 212);
+    color: white;
+    font-size: 0.75em;
+    padding: 0.25em 0.5em;
+    white-space: nowrap;
+}

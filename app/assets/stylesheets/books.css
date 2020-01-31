@@ -1,0 +1,50 @@
+#booklist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#booklist-container ul {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+#booklist-container li {
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+
+.book-link {
+    text-decoration: none;
+    margin-left: 0.5em;
+}
+
+#create-book-container {
+    display: flex;
+    justify-content: center;
+}
+
+#create-book-form {
+    display: flex;
+    flex-direction: column;
+    width: 25em;
+}
+
+#create-book-form input {
+    font-size: 1.5em;
+    margin-top: 0.75em;
+    border: none;
+    background: whitesmoke;
+    padding: 0.5em;
+}
+
+#create-book-form button {
+    margin-top: 0.75em;
+    border: none;
+    font-size: 2em;
+}
+
+#booklist-container .fa {
+    margin-right: 0.2em;
+}
