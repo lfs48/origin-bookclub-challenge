@@ -1,6 +1,6 @@
 import * as UsersAPIUtil from '../../util/api/users_api_util';
 import {loginUser} from '../sessions/sessions_actions'; 
-import {RECEIVE_USER, RECEIVE_ALL_USERS} from '../types';
+import {RECEIVE_USER, RECEIVE_ALL_USERS, RECEIVE_SIGNUP_ERRORS} from '../types';
 
 
 // Standard actions
@@ -15,6 +15,12 @@ export const receiveUser = (user) => ({
 export const receiveAllUsers = (users) => ({
     type: RECEIVE_ALL_USERS,
     users: users
+});
+
+// Action to add signup errors to state.
+export const receiveSignupErrors = (errors) => ({
+    type: RECEIVE_SIGNUP_ERRORS,
+    errors: errors
 });
 
 // Thunk actions
