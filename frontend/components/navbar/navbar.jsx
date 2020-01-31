@@ -53,7 +53,7 @@ const Navbar = () => {
     if (loggedIn) {
         content = 
         <> 
-        <span>Welcome, {currentUser.username}</span>
+        <span>{currentUser.username}</span>
         <button onClick={e => handleLogout(e)}>Log Out</button>
         </>
     } else {
@@ -81,7 +81,12 @@ const Navbar = () => {
 
     return (
         <nav id="nav-container">
-            {content}
+            <section id="nav-left">
+                <header>Origin Bookclub</header>
+            </section>
+            <section id="nav-right">
+                {content}
+            </section>
         </nav>
     );
 }

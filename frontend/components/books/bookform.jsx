@@ -46,30 +46,32 @@ const Bookform = ({match, history}) => {
     }
 
     return(
-        <form id="create-book-form">
-            <input
-                type="text" 
-                id="title-input" 
-                placeholder="Title"
-                value={state.title}
-                onChange={e => updateInput(e, "title")}
-            ></input>
-            <input
-                type="text" 
-                id="author-input" 
-                placeholder="Author"
-                value={state.author}
-                onChange={e => updateInput(e, "author")}
-            ></input>
-            <input
-                type="text" 
-                id="genre-input" 
-                placeholder="Genre"
-                value={state.genre}
-                onChange={e => updateInput(e, "genre")}
-            ></input>
-            <button onClick={e => handleSubmit(e)}>Submit</button>
-        </form>
+        <section id="create-book-container">
+            <form id="create-book-form">
+                <input
+                    type="text" 
+                    id="title-input" 
+                    placeholder="Title"
+                    value={state.title}
+                    onChange={e => updateInput(e, "title")}
+                ></input>
+                <input
+                    type="text" 
+                    id="author-input" 
+                    placeholder="Author"
+                    value={state.author}
+                    onChange={e => updateInput(e, "author")}
+                ></input>
+                <input
+                    type="text" 
+                    id="genre-input" 
+                    placeholder="Genre"
+                    value={state.genre}
+                    onChange={e => updateInput(e, "genre")}
+                ></input>
+                <button onClick={e => handleSubmit(e)}>Submit</button>
+            </form>
+        </section>
     );
 }
 

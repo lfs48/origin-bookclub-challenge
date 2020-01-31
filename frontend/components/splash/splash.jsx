@@ -33,7 +33,6 @@ const Splash = () => {
     return(
         <section id="splash-container">
             <header>New User? Register An Account!</header>
-
             <input 
                 type="text" 
                 id="splash-username-input" 
