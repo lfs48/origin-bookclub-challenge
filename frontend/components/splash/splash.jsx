@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {createUser} from '../../actions/entities/user_actions'
 import {merge} from 'lodash';
 
@@ -11,6 +11,12 @@ const Splash = () => {
     });
 
     const dispatch = useDispatch();
+
+    const {errors} = useSelector(
+        state => ({
+            errors: state.errors.signup
+        })
+    );
 
     // Controls input fields by updating react state.
     const updateInput = (e, field) => {
@@ -28,6 +34,14 @@ const Splash = () => {
             password: state.password
         };
         dispatch(createUser(user));
+    }
+
+    let errorMessages = <></>;
+
+    if (Array.isArray(errors)) {
+        errorMessages = errors.map( error => {
+            return <li>{error}</li>
+        });
     }
 
     return(
@@ -50,6 +64,10 @@ const Splash = () => {
             ></input>
 
             <button onClick={e => handleRegister(e)}>Register</button>
+            
+            <ul>
+                {errorMessages}
+            </ul>
         </section>
     )
 }
